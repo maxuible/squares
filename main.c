@@ -23,11 +23,11 @@ static void drawRandomRect(u8* buffer)
 {
     u8 color[4] = {255, 0, 0, 255};
 
+    int w = rand() % (WINDOW_WIDTH / 4);
+    int h = rand() % (WINDOW_HEIGHT / 4);
 
-    int x = rand() % (WINDOW_WIDTH  - 100);
-    int y = rand() % (WINDOW_HEIGHT - 100);
-    int w = rand() % 10;
-    int h = rand() % 10;
+    int x = rand() % (WINDOW_WIDTH  - w);
+    int y = rand() % (WINDOW_HEIGHT - h);
     color[0] = rand() % 255;
     color[1] = rand() % 255;
     color[2] = rand() % 255;
