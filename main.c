@@ -19,12 +19,22 @@ static void drawRect(u8* buffer, i32 bufferWidth, i32 x, i32 y, i32 w, i32 h, u8
     }
 }
 
+
+static void subtractColor(u8* buffer) {
+    for (int i = 1; i < (WINDOW_HEIGHT * WINDOW_WIDTH * 4); ++i) {
+        if (buffer[i] > 0) { buffer[i] = buffer[i] - 1; }
+    }
+
+}
+
 static void drawRandomRect(u8* buffer)
 {
     u8 color[4] = {255, 0, 0, 255};
 
-    int w = rand() % (WINDOW_WIDTH / 4);
-    int h = rand() % (WINDOW_HEIGHT / 4);
+    int w = rand() % (WINDOW_WIDTH / 8);
+    int h = rand() % (WINDOW_HEIGHT / 8);
+//    int w = 1;
+//    int h = 1;
 
     int x = rand() % (WINDOW_WIDTH  - w);
     int y = rand() % (WINDOW_HEIGHT - h);
@@ -54,7 +64,7 @@ int main() {
 
         drawRandomRect(buffer);
 //        drawRect(buffer, WINDOW_WIDTH, 0, 0, 100, 100, color2);
-
+        subtractColor(buffer);
 		while (RGFW_window_checkEvent(window, &event)) {
 			if (event.type == RGFW_quit)
 				break;
